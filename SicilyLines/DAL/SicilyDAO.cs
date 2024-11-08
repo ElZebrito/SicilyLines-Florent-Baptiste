@@ -14,7 +14,7 @@ namespace Sicily.DAL
     public class SicilyDAO
     {
 
-       /* // attributs de connexion statiques
+        // attributs de connexion statiques
         private static string provider = "localhost";
 
         private static string dataBase = "sicilylines";
@@ -36,10 +36,10 @@ namespace Sicily.DAL
 
 
         // Récupération de la liste des Secteur
-        public static List<Secteur> getSecteurs()
+        public static List<Traversee> getTraversees()
         {
 
-            List<Secteur> lc = new List<Secteur>();
+            List<Traversee> lt = new List<Traversee>();
 
             try
             {
@@ -50,28 +50,31 @@ namespace Sicily.DAL
                 maConnexionSql.openConnection();
 
 
-                Ocom = maConnexionSql.reqExec("Select * from secteur");
+                Ocom = maConnexionSql.reqExec("Select * from Traversee");
 
 
                 MySqlDataReader reader = Ocom.ExecuteReader();
 
-                Secteur s;
+                Traversee t;
 
 
-
+             
 
                 while (reader.Read())
                 {
 
-                    int ID_SECTEUR = (int)reader.GetValue(0);
-                    string LIBELLE_SECTEUR = (string)reader.GetValue(1);
+                    int IDTRAVERSEE = (int)reader.GetValue(0);
+                    Liaison IDLIAISON = (Liaison)reader.GetValue(1);
+                    Bateau IDBATEAU = (Bateau)reader.GetValue(2);
+                    DateTime DATETRAVERSEE = (DateTime)reader.GetValue(3);
+                    string HEURE = (string)reader.GetValue(4);
 
 
                     //Instanciation d'un Secteur
-                    s = new Secteur(ID_SECTEUR, LIBELLE_SECTEUR);
+                    t = new Traversee(IDTRAVERSEE, IDLIAISON, IDBATEAU, DATETRAVERSEE, HEURE);
 
                     // Ajout de ce secteur à la liste 
-                    lc.Add(s);
+                    lt.Add(t);
 
 
                 }
@@ -83,7 +86,7 @@ namespace Sicily.DAL
                 maConnexionSql.closeConnection();
 
                 // Envoi de la liste au Manager
-                return (lc);
+                return (lt);
 
 
             }
@@ -125,15 +128,14 @@ namespace Sicily.DAL
                 while (reader.Read())
                 {
 
-                    int ID_LIAISON = (int)reader.GetValue(0);
-                    int ID_SECTEUR = (int)reader.GetValue(1);
-                    int ID_PORT = (int)reader.GetValue(2);
-                    int ID_PORT_ARRIVEE = (int)reader.GetValue(3);
-                    //string DUREE_LIAISON = (string)reader.GetValue(4);
-                    TimeSpan DUREE_LIAISON = reader.GetTimeSpan(4);
+                    int iDLIAISON = (int)reader.GetValue(0);
+                    Secteur iDSECTEUR = (Secteur)reader.GetValue(1);
+                    Port iDPORTDEPART = (Port)reader.GetValue(2);
+                    Port iDPORTARRIVEE = (Port)reader.GetValue(3);
+                    string dUREELIAISON = (string)reader.GetValue(4);
 
                     //Instanciation d'un Secteur
-                    l = new Liaison(ID_LIAISON, ID_SECTEUR, ID_PORT, ID_PORT_ARRIVEE, DUREE_LIAISON);
+                    l = new Liaison(iDLIAISON, iDSECTEUR, iDPORTDEPART, iDPORTARRIVEE, dUREELIAISON);
 
                     // Ajout de ce secteur à la liste 
                     ll.Add(l);
@@ -163,20 +165,20 @@ namespace Sicily.DAL
 
         }
 
-        public static List<Liaison> TrouverLiaison(Secteur s, List<Liaison> ll)
+        public static List<Liaison> TrouverLiaison(Traversee t, List<Liaison> ll)
         {
 
-            List<Liaison> ListeLiaisonSecteur = new List<Liaison>();
+            List<Liaison> ListeLiaisonTraversee = new List<Liaison>();
 
             foreach (Liaison liaison in ll)
             {
-                if (liaison.IdSecteur == s.Id)
+                if (liaison.IdLiaison == t.IdTr)
                 {
-                    ListeLiaisonSecteur.Add(liaison);
+                    ListeLiaisonTraversee.Add(liaison);
                 }
             }
 
-            return ListeLiaisonSecteur;
+            return ListeLiaisonTraversee;
 
         }
 
@@ -188,7 +190,7 @@ namespace Sicily.DAL
 
             foreach (Traversee traversee in lTR)
             {
-                if (l.IdLiaison == traversee.IdLi)
+                if (l.IdLi == traversee.IdLi)
                 {
                     ListeLiaisonTraversee.Add(traversee);
                 }
@@ -200,7 +202,7 @@ namespace Sicily.DAL
             return ListeLiaisonTraversee;
 
         }
-
+        /*
         public static void SupLiaison(Liaison liaison)
         {
             try
@@ -330,7 +332,8 @@ namespace Sicily.DAL
             }
 
 
-        }*/
+        }
+        */
     }
 
 
