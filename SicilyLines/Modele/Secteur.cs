@@ -11,27 +11,14 @@ namespace SicilyLines.Modele
 {
     public class Secteur
     {
-        private int IDSECTEUR;
-        private string LIBELLE;
+        public int IdSecteur { get; set; }
+        public string Libelle { get; set; }
 
-        // constructeurs 
-        public Secteur()
+        public Secteur(int idSecteur, string libelle)
         {
+            IdSecteur = idSecteur;
+            Libelle = libelle;
         }
-
-        public int IdSecteur { get => IDSECTEUR; }
-        public string Libelle { get => LIBELLE; }
-
-
-        public Secteur(int IdS , string Lib)
-        {
-            IDSECTEUR = IdS;
-            LIBELLE = Lib;
-        }
-
-        /*public override String ToString()
-        {
-            return "Secteur " + this.IDSECTEUR + ", " + this.LIBELLE;
-        }*/
     }
+
 }

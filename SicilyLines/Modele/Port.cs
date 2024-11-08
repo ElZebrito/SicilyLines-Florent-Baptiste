@@ -8,22 +8,14 @@ namespace SicilyLines.Modele
 {
     public class Port
     {
-        private int IDPORT;
-        private string NOM;
+        public int IdPort { get; set; }
+        public string Nom { get; set; }
 
-        // constructeurs 
-        public Port()
+        public Port(int idPort, string nom)
         {
+            IdPort = idPort;
+            Nom = nom;
         }
-
-        public int IdPort { get => IDPORT; }
-        public string Nom { get => NOM; }
-
-        public Port(int IdP, string Nom)
-        {
-            IDPORT = IdP;
-            NOM = Nom;
-        }
-
     }
+
 }

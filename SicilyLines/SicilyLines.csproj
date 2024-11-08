@@ -98,8 +98,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controleur\Mgr.cs" />
     <Compile Include="DAL\connexion.cs" />
+    <Compile Include="DAL\LiaisonDAO.cs" />
+    <Compile Include="DAL\PortDAO.cs" />
+    <Compile Include="DAL\SecteurDAO.cs" />
     <Compile Include="DAL\SicilyDAO.cs" />
+    <Compile Include="DAL\TraverseeDAO.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,8 +144,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controleur\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

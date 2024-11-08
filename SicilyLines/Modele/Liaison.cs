@@ -22,19 +22,19 @@ namespace SicilyLines.Modele
 
         // remplace getId()
         public int IdLiaison { get => IDLIAISON; }
-        public Secteur IdSecteur { get => IDSECTEUR; }
-        public Port IdPortDepart { get => IDPORTDEPART; }
-        public Port IdPortArrivee { get => IDPORTARRIVEE; }
+        public Secteur Secteur;
+        public Port PortDepart;
+        public Port PortArrivee;
         public string Duree { get => DUREELIAISON;}
         
 
-        public Liaison(int iDLIAISON, Secteur iDSECTEUR, Port iDPORTDEPART, Port iDPORTARRIVEE, String dUREELIAISON)
+        public Liaison(int idLiaison, Secteur idSecteur, Port portDepart, Port portArrivee, String duree)
         {
-            IDLIAISON = iDLIAISON;
-            IDSECTEUR = iDSECTEUR;
-            IDPORTDEPART = iDPORTDEPART;
-            IDPORTARRIVEE = iDPORTARRIVEE;
-            DUREELIAISON = dUREELIAISON;
+            IDLIAISON = idLiaison;
+            IDSECTEUR = idSecteur;
+            IDPORTARRIVEE = portDepart;
+            IDPORTDEPART = portArrivee;
+            DUREELIAISON = duree;
            
         }
 

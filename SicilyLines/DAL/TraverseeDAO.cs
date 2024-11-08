@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using SicilyLines.Modele;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Sicily.DAL
+namespace SicilyLines.DAL
 {
-
-    public class SicilyDAO
+    internal class TraverseeDAO
     {
         private static string provider = "localhost";
         private static string dataBase = "sicilylines";
@@ -16,43 +18,41 @@ namespace Sicily.DAL
         private static ConnexionSql maConnexionSql;
 
         private static MySqlCommand Ocom;
-        private static MySqlCommand Ocom2;
-        private static MySqlCommand Ocom3;
 
-        public static List<Liaison> getLiaisons()
+        public static List<Traversee> getTraversees()
         {
-            List<Liaison> ll = new List<Liaison>();
+            List<Traversee> lt = new List<Traversee>();
 
             try
             {
                 maConnexionSql = ConnexionSql.getInstance(provider, dataBase, uid, mdp);
                 maConnexionSql.openConnection();
 
-                Ocom2 = maConnexionSql.reqExec("Select * from liaison");
-                MySqlDataReader reader = Ocom2.ExecuteReader();
+                Ocom = maConnexionSql.reqExec("Select * from Traversee");
+                MySqlDataReader reader = Ocom.ExecuteReader();
 
-                Liaison l;
+                Traversee t;
 
                 while (reader.Read())
                 {
                     int iDLIAISON = (int)reader.GetValue(0);
-                    int iDSECTEUR = (int)reader.GetValue(1);
-                    int iDPORTDEPART = (int)reader.GetValue(2);
-                    int iDPORTARRIVEE = (int)reader.GetValue(3);
-                    string dUREELIAISON = (string)reader.GetValue(4);
+                    int iDTRAVERSEE = (int)reader.GetValue(1);
+                    int iDBATEAU = (int)reader.GetValue(2);
+                    string dATETRAVERSEE = (string)reader.GetValue(3);
+                    string hEURE = (string)reader.GetValue(4);
 
                     // Instanciation d'une Liaison
-                    l = new Liaison(iDLIAISON, iDSECTEUR, iDPORTDEPART, iDPORTARRIVEE, dUREELIAISON);
+                    t = new Traversee(iDLIAISON, iDTRAVERSEE, iDBATEAU, dATETRAVERSEE, hEURE);
 
                     // Ajout de cette liaison à la liste 
-                    ll.Add(l);
+                    lt.Add(t);
                 }
 
                 reader.Close();
                 maConnexionSql.closeConnection();
 
                 // Envoi de la liste au Manager
-                return ll;
+                return lt;
             }
             catch (Exception emp)
             {

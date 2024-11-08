@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using SicilyLines.Modele;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Sicily.DAL
+namespace SicilyLines.DAL
 {
-
-    public class SicilyDAO
+    internal class LiaisonDAO
     {
         private static string provider = "localhost";
         private static string dataBase = "sicilylines";
@@ -16,8 +18,6 @@ namespace Sicily.DAL
         private static ConnexionSql maConnexionSql;
 
         private static MySqlCommand Ocom;
-        private static MySqlCommand Ocom2;
-        private static MySqlCommand Ocom3;
 
         public static List<Liaison> getLiaisons()
         {
@@ -28,8 +28,8 @@ namespace Sicily.DAL
                 maConnexionSql = ConnexionSql.getInstance(provider, dataBase, uid, mdp);
                 maConnexionSql.openConnection();
 
-                Ocom2 = maConnexionSql.reqExec("Select * from liaison");
-                MySqlDataReader reader = Ocom2.ExecuteReader();
+                Ocom = maConnexionSql.reqExec("Select * from liaison");
+                MySqlDataReader reader = Ocom.ExecuteReader();
 
                 Liaison l;
 
@@ -37,12 +37,19 @@ namespace Sicily.DAL
                 {
                     int iDLIAISON = (int)reader.GetValue(0);
                     int iDSECTEUR = (int)reader.GetValue(1);
-                    int iDPORTDEPART = (int)reader.GetValue(2);
-                    int iDPORTARRIVEE = (int)reader.GetValue(3);
-                    string dUREELIAISON = (string)reader.GetValue(4);
+                    string LIBELLE = (string)reader.GetValue(2);
+                    int iDPORTD = (int)reader.GetValue(3);
+                    string lIBPORTD = (string)reader.GetValue(4);
+                    int iDPORTA = (int)reader.GetValue(5);
+                    string lIBPORTA = (string)reader.GetValue(6);
+                    string duree = (string)reader.GetValue(7);
 
+
+                    Secteur s = new Secteur(iDSECTEUR, LIBELLE);
+                    Port portd = new Port(iDPORTD, lIBPORTD);
+                    Port porta = new Port(iDPORTA, lIBPORTA);
                     // Instanciation d'une Liaison
-                    l = new Liaison(iDLIAISON, iDSECTEUR, iDPORTDEPART, iDPORTARRIVEE, dUREELIAISON);
+                    l = new Liaison(iDLIAISON,s, portd, porta, duree);
 
                     // Ajout de cette liaison à la liste 
                     ll.Add(l);
