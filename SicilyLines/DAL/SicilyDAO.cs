@@ -190,7 +190,7 @@ namespace Sicily.DAL
 
             foreach (Traversee traversee in lTR)
             {
-                if (l.IdLi == traversee.IdLi)
+                if (l.IdLiaison == traversee.IdTr)
                 {
                     ListeLiaisonTraversee.Add(traversee);
                 }
