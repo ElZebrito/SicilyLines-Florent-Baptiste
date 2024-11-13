@@ -8,46 +8,49 @@ namespace SicilyLines.Modele
 {
     public class Liaison
     {
-        private int IDLIAISON;
-        private Secteur IDSECTEUR;
-        private Port IDPORTDEPART;
-        private Port IDPORTARRIVEE;
-        private string DUREELIAISON;
-        
+        private int idLiaison;
+        private TimeSpan duree;
+        private Secteur idSecteur;
+        private Port idPortDepart;
+        private Port idPortArrivee;
 
-
-
-
-
-
-        // remplace getId()
-        public int IdLiaison { get => IDLIAISON; }
-        public Secteur Secteur;
-        public Port PortDepart;
-        public Port PortArrivee;
-        public string Duree { get => DUREELIAISON;}
-        
-
-        public Liaison(int idLiaison, Secteur idSecteur, Port portDepart, Port portArrivee, String duree)
+        public Liaison(int idLiaison, TimeSpan duree, Secteur idSecteur, Port idPortDepart, Port idPortArrivee)
         {
-            IDLIAISON = idLiaison;
-            IDSECTEUR = idSecteur;
-            IDPORTARRIVEE = portDepart;
-            IDPORTDEPART = portArrivee;
-            DUREELIAISON = duree;
-           
+            this.idLiaison = idLiaison;
+            this.duree = duree;
+            this.idSecteur = idSecteur;
+            this.idPortDepart = idPortDepart;
+            this.idPortArrivee = idPortArrivee;
         }
 
-
-
-        // Constructeur vide
-
-
-   
-        public string DescriptionLIAISON
+        public int IdLiaison
         {
-            get => "IdL : " + this.IDLIAISON + " IdS : " + this.IDSECTEUR + " IdPortDepart : " + this.IDPORTDEPART + " IdPortArrivee : " + this.IDPORTARRIVEE + " Duree : " + this.DUREELIAISON;
+            get => idLiaison;
         }
 
+        public TimeSpan Duree
+        {
+            get => duree;
+        }
+
+        public Secteur IdSecteur
+        {
+            get => idSecteur;
+        }
+
+        public Port IdPortDepart
+        {
+            get => idPortDepart;
+        }
+
+        public Port IdPortArrivee
+        {
+            get => idPortArrivee;
+        }
+
+        public string Description
+        {
+            get => $"Id Liaison : {idLiaison}, Nom Port Départ : {idPortDepart.Nom}, Nom Port Arrivée : {idPortArrivee.Nom}, Durée : {duree}";
+        }
     }
 }

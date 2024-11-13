@@ -12,51 +12,35 @@ using System.Windows.Forms;
 
 namespace SicilyLines
 {
-    public partial class Form1 : Form
+    public partial class Gestion : Form
     {
         Mgr monManager;
-
-        List<Liaison> lEmp = new List<Liaison>();
-
-
-        public Form1()
+        List<Liaison> lstLiaison = new List<Liaison>();
+        public Gestion()
         {
             InitializeComponent();
             monManager = new Mgr();
         }
 
-        
-        public void affiche()
-
+        public void afficherLiaison()
         {
-
-
             try
             {
-
-
                 lbLiaison.DataSource = null;
-                lbLiaison.DataSource = lEmp;
+                lbLiaison.DataSource = lstLiaison;
                 lbLiaison.DisplayMember = "Description";
-
-
             }
-
 
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
             }
-
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Gestion_Load(object sender, EventArgs e)
         {
-            lEmp = monManager.chargementLiaisonsBD();
-
-
-            affiche();
+            lstLiaison = monManager.chargementLiaisonBD();
+            afficherLiaison();
         }
     }
 }

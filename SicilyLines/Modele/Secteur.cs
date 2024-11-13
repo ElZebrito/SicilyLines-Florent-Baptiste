@@ -11,13 +11,22 @@ namespace SicilyLines.Modele
 {
     public class Secteur
     {
-        public int IdSecteur { get; set; }
-        public string Libelle { get; set; }
+        private int idSecteur;
+        private string libSecteur;
 
-        public Secteur(int idSecteur, string libelle)
+        public Secteur(int idSecteur, string libSecteur)
         {
-            IdSecteur = idSecteur;
-            Libelle = libelle;
+            this.idSecteur = idSecteur;
+            this.libSecteur = libSecteur;
+        }
+        public int IdSecteur
+        {
+            get => idSecteur;
+        }
+
+        public string Description
+        {
+            get => $"{libSecteur} (ID: {idSecteur})"; // Format de description
         }
     }
 

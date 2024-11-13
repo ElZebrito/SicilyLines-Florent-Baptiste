@@ -8,41 +8,44 @@ namespace SicilyLines.Modele
 {
     public class Traversee
     {
-        private int IDTRAVERSEE;
-        private Liaison IDLIAISON;
-        private Bateau IDBATEAU;
-        private DateTime DATETRAVERSEE;
-        private string HEURE;
+        private string idTraversee;
+        private string idBateau;
+        private Liaison liaison;
+        private DateTime dateTraversee;
+        private TimeSpan heure;
 
-        // remplace getId()
-        public int IdTr { get => IDTRAVERSEE; }
-        public Liaison IdLi { get => IDLIAISON; }
-
-        public Bateau IdBat { get => IDBATEAU; }
-        public DateTime IdDateTr { get => DATETRAVERSEE; }
-        public string IdH { get => HEURE; }
-
-
-        public Traversee(int IdTr, Liaison IdLi, Bateau IdBat, DateTime IdDateTr, String IdH)
+        public Traversee(string idTraversee, string idBateau, Liaison liaison, DateTime dateTraversee, TimeSpan heure)
         {
-            this.IDTRAVERSEE = IdTr;
-            this.IDLIAISON = IdLi;
-            this.IDBATEAU = IdBat;
-            this.DATETRAVERSEE = IdDateTr;
-            this.HEURE = IdH;
-
-
+            this.idTraversee = idTraversee;
+            this.idBateau = idBateau;
+            this.liaison = liaison;
+            this.dateTraversee = dateTraversee;
+            this.heure = heure;
         }
 
-
-
-
-
-        public string DescriptionTraversee
+        public string IdTraversee
         {
-            get => "Id Traversee : " + this.IDTRAVERSEE + " IdLiaison : " + this.IDLIAISON + " Numéro Bateau : " + this.IDBATEAU + " Date de la Traversée : " + this.DATETRAVERSEE + " Heure de la traversée : " + this.HEURE;
+            get => idTraversee;
         }
 
+        public string IdBateau
+        {
+            get => idBateau;
+        }
 
+        public Liaison Liaison
+        {
+            get => liaison;
+        }
+
+        public DateTime DateTraversee
+        {
+            get => dateTraversee;
+        }
+
+        public TimeSpan Heure
+        {
+            get => heure;
+        }
     }
 }

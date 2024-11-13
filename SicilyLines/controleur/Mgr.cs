@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Sicily.DAL;
+using SicilyLines.DAL;
 using SicilyLines.Modele;
 
 
 namespace SicilyLines.Controler
 {
-    public class Mgr
+    internal class Mgr
     {
+        LiaisonDAO LiaisonDAO = new LiaisonDAO();
 
         List<Liaison> maListeLiaison;
 
@@ -22,39 +23,13 @@ namespace SicilyLines.Controler
 
 
 
-        // Récupération de la liste des liaisons à partir de la DAL
-        public List<Liaison> chargementLiaisonsBD()
+        // Récupération de la liste des employés à partir de la DAL
+        public List<Liaison> chargementLiaisonBD()
         {
 
-            maListeLiaison = SicilyDAO.getLiaisons();
+            maListeLiaison = LiaisonDAO.getLiaisons();
 
             return (maListeLiaison);
         }
-
-
-        // Mise à jour d'un employé  dans la DAL
-        //public void updateEmploye(Employe e)
-        //{
-
-        //    EmployeDAO.updateEmploye(e);
-
-        //}
-
-        //// Suppresion dans la DAL
-        //public void deleteEmploye(Employe e)
-        //{
-
-        //    EmployeDAO.deleteEmploye(e);
-
-        //}
-
-        //// Insertion dans la DAL
-        //public void insertEmploye(int id, string login)
-        //{
-
-        //    EmployeDAO.insertEmploye(id, login);
-
-        //}
-
     }
 }

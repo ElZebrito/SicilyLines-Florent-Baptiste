@@ -7,12 +7,9 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Data.SqlClient;
 
-namespace SicilyLines.Modele
+namespace SicilyLines.DAL
 {
 
-    /**
-     * Classe de connexion à une base de données
-     */
     public class ConnexionSql
     {
         private static ConnexionSql connection = null;
@@ -94,12 +91,7 @@ namespace SicilyLines.Modele
         {
             try
             {
-
-
-                if (mysqlCn.State == System.Data.ConnectionState.Closed)
-                {
-                    mysqlCn.Open();
-                }
+                mysqlCn.Open();
             }
             catch (Exception emp)
             {

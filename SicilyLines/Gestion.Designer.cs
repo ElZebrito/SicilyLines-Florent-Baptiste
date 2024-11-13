@@ -1,6 +1,6 @@
 ﻿namespace SicilyLines
 {
-    partial class Form1
+    partial class Gestion
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -38,17 +38,17 @@
             // 
             this.lbLiaison.FormattingEnabled = true;
             this.lbLiaison.ItemHeight = 16;
-            this.lbLiaison.Location = new System.Drawing.Point(96, 50);
+            this.lbLiaison.Location = new System.Drawing.Point(31, 50);
             this.lbLiaison.Margin = new System.Windows.Forms.Padding(4);
             this.lbLiaison.Name = "lbLiaison";
-            this.lbLiaison.Size = new System.Drawing.Size(252, 196);
+            this.lbLiaison.Size = new System.Drawing.Size(748, 292);
             this.lbLiaison.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label1.Location = new System.Drawing.Point(151, 16);
+            this.label1.Location = new System.Drawing.Point(354, 16);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 16);
@@ -59,7 +59,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label2.Location = new System.Drawing.Point(607, 16);
+            this.label2.Location = new System.Drawing.Point(939, 16);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(203, 16);
@@ -70,25 +70,25 @@
             // 
             this.lbTraversee.FormattingEnabled = true;
             this.lbTraversee.ItemHeight = 16;
-            this.lbTraversee.Location = new System.Drawing.Point(579, 50);
+            this.lbTraversee.Location = new System.Drawing.Point(808, 50);
             this.lbTraversee.Margin = new System.Windows.Forms.Padding(4);
             this.lbTraversee.Name = "lbTraversee";
-            this.lbTraversee.Size = new System.Drawing.Size(264, 196);
+            this.lbTraversee.Size = new System.Drawing.Size(451, 292);
             this.lbTraversee.TabIndex = 4;
             // 
-            // Form1
+            // Gestion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(1286, 554);
             this.Controls.Add(this.lbTraversee);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbLiaison);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Name = "Gestion";
+            this.Text = "Gestion";
+            this.Load += new System.EventHandler(this.Gestion_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
