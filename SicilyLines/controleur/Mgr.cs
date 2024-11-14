@@ -42,5 +42,12 @@ namespace SicilyLines.Controler
             return (maListeTraversee);
         }
 
+        public void InsererNouvelleTraversee(int idTraversee, int idBateau, Liaison liaison, string dateTraversee, TimeSpan heure)
+        {
+            Traversee nouvelleTraversee = new Traversee(idTraversee, idBateau, liaison, dateTraversee, heure);
+            TraverseeDAO.InsertTraversee(nouvelleTraversee);
+        }
+
+
     }
 }

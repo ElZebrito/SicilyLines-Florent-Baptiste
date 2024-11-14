@@ -65,5 +65,40 @@ namespace SicilyLines
             lstTraversee = monManager.chargementTraverseeLiaisonBD(uneLiaison);
             afficherTraversee();
         }
+
+        private void insertButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int idTraversee = Convert.ToInt32(tbIdTraversee.Text);
+                int idBateau = Convert.ToInt32(tbIdBateau.Text);
+                Liaison selectedLiaison = (Liaison)lbLiaison.SelectedItem;
+                string dateTraversee = tbDateTraversee.Text;
+                TimeSpan heure = TimeSpan.Parse(tbHeure.Text);
+
+                monManager.InsererNouvelleTraversee(idTraversee, idBateau, selectedLiaison, dateTraversee, heure);
+
+                // Rafraîchir la liste des traversées
+                lstTraversee = monManager.chargementTraverseeLiaisonBD(selectedLiaison);
+                afficherTraversee();
+
+                MessageBox.Show("Traversée ajoutée avec succès.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors de l'ajout de la traversée : " + ex.Message);
+            }
+        }
+
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbIdBateau_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

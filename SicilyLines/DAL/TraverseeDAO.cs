@@ -52,10 +52,32 @@ namespace SicilyLines.DAL
                 // Envoi de la liste au Manager
                 return lt;
             }
-            catch (Exception emp)
+            catch (Exception ex)
             {
-                throw emp;
+                throw ex;
             }
         }
+
+        public static void InsertTraversee(Traversee traversee)
+        {
+            try
+            {
+                maConnexionSql = ConnexionSql.getInstance(provider, dataBase, uid, mdp);
+                maConnexionSql.openConnection();
+
+                string query = "INSERT INTO traversee (IDTRAVERSEE, IDBATEAU, IDLIAISON, DATETRAVERSEE, HEURE) " +
+                               $"VALUES ({traversee.IdTraversee}, {traversee.IdBateau}, {traversee.Liaison.IdLiaison}, '{traversee.DateTraversee}', '{traversee.Heure}')";
+
+                Ocom = maConnexionSql.reqExec(query);
+                Ocom.ExecuteNonQuery();
+
+                maConnexionSql.closeConnection();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erreur lors de l'insertion de la traversée : " + ex.Message);
+            }
+        }
+
     }
 }
