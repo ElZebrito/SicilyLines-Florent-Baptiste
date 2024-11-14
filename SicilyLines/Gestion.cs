@@ -66,13 +66,49 @@ namespace SicilyLines
             afficherTraversee();
         }
 
-        private void insertButton_Click(object sender, EventArgs e)
-        {
-            Liaison selectedLiaison = (Liaison)lbLiaison.SelectedItem;
-            Insertion insertion = new Insertion(selectedLiaison);
-            insertion.ShowDialog();
-            lstTraversee = monManager.chargementTraverseeLiaisonBD(selectedLiaison);
-            afficherTraversee();
+        //private void insertButton_Click(object sender, EventArgs e)
+        //{
+        //    Liaison selectedLiaison = (Liaison)lbLiaison.SelectedItem;
+        //    Insertion insertion = new Insertion(selectedLiaison);
+        //    insertion.ShowDialog();
+        //    lstTraversee = monManager.chargementTraverseeLiaisonBD(selectedLiaison);
+        //    afficherTraversee();
+        //}
+
+        //private void updateButton_Click(object sender, EventArgs e)
+        //{
+        //    // Vérifier si une liaison est sélectionnée
+        //    if (lbLiaison.SelectedItem != null)
+        //    {
+        //        Liaison selectedLiaison = (Liaison)lbLiaison.SelectedItem;
+
+        //        // Charger les traversées associées à la liaison sélectionnée
+        //        List<Traversee> traverses = monManager.chargementTraverseeLiaisonBD(selectedLiaison);
+
+        //        // Vérifier si une traversée est sélectionnée dans la liste des traversées (assurez-vous que vous utilisez un ListBox)
+        //        if (lstTraversee.SelectedItem != null)
+        //        {
+        //            Traversee selectedTraversee = (Traversee)lstTraversee.SelectedItem;
+
+        //            // Créer la fenêtre de modification avec la traversée sélectionnée
+        //            Insertion insertion = new Insertion(selectedLiaison, selectedTraversee);
+        //            insertion.ShowDialog();
+
+        //            // Une fois que la modification est effectuée, rechargez les traversées
+        //            lstTraversee = monManager.chargementTraverseeLiaisonBD(selectedLiaison);
+
+        //            // Rafraîchir l'affichage des traversées
+        //            afficherTraversee();
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Veuillez sélectionner une traversée à modifier.");
+        //        }
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Veuillez sélectionner une liaison.");
+        //    }
         }
+
     }
-}

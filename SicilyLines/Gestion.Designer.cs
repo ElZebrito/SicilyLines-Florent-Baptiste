@@ -152,6 +152,7 @@
             this.updateButton.TabIndex = 0;
             this.updateButton.Text = "Mettre à jour la traversée sélectionnée";
             this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // Gestion
             // 

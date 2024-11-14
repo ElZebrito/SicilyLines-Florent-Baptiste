@@ -79,5 +79,27 @@ namespace SicilyLines.DAL
             }
         }
 
+        public static void updateTraversee(Traversee t)
+        {
+            try
+            {
+                maConnexionSql = ConnexionSql.getInstance(provider, dataBase, uid, mdp);
+                maConnexionSql.openConnection();
+
+                string query = "UPDATE traversee SET IDTRAVERSEE = '" + t.IdTraversee + "', IDBATEAU = '" + t.IdBateau + "', DATETRAVERSEE = '" + t.DateTraversee + "', HEURE = '" + t.Heure + "' WHERE IDLIAISON = '" + t.Liaison.IdLiaison + "'";
+
+
+                Ocom = maConnexionSql.reqExec(query);
+                int i = Ocom.ExecuteNonQuery();
+
+                maConnexionSql.closeConnection();
+            }
+            catch (Exception emp)
+            {
+                throw (emp);
+            }
+        }
+
+
     }
 }
