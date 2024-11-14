@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le : ven. 04 oct. 2024 à 08:21
--- Version du serveur : 10.4.32-MariaDB
--- Version de PHP : 8.2.12
+-- Hôte : localhost:3306
+-- Généré le : jeu. 14 nov. 2024 à 15:09
+-- Version du serveur : 8.0.30
+-- Version de PHP : 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,11 +28,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `bateau` (
-  `IDBATEAU` int(11) NOT NULL,
-  `NOM` char(32) DEFAULT NULL,
+  `IDBATEAU` int NOT NULL,
+  `NOM` char(32) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `LONGUEUR` decimal(10,2) DEFAULT NULL,
   `LARGEUR` decimal(10,2) DEFAULT NULL,
-  `VITESSE` int(11) DEFAULT NULL
+  `VITESSE` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -53,8 +53,8 @@ INSERT INTO `bateau` (`IDBATEAU`, `NOM`, `LONGUEUR`, `LARGEUR`, `VITESSE`) VALUE
 --
 
 CREATE TABLE `categorie` (
-  `IDCATEGORIE` int(11) NOT NULL,
-  `LIBELLE` char(32) DEFAULT NULL
+  `IDCATEGORIE` int NOT NULL,
+  `LIBELLE` char(32) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -73,10 +73,10 @@ INSERT INTO `categorie` (`IDCATEGORIE`, `LIBELLE`) VALUES
 --
 
 CREATE TABLE `client` (
-  `IDCLIENT` int(11) NOT NULL,
-  `CP` int(11) DEFAULT NULL,
-  `ADRESSE` char(32) DEFAULT NULL,
-  `VILLE` char(32) DEFAULT NULL
+  `IDCLIENT` int NOT NULL,
+  `CP` int DEFAULT NULL,
+  `ADRESSE` char(32) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `VILLE` char(32) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -102,9 +102,9 @@ INSERT INTO `client` (`IDCLIENT`, `CP`, `ADRESSE`, `VILLE`) VALUES
 --
 
 CREATE TABLE `contenir` (
-  `IDBATEAU` int(11) NOT NULL,
-  `IDCATEGORIE` int(11) NOT NULL,
-  `CAPACITEMAX` int(11) NOT NULL
+  `IDBATEAU` int NOT NULL,
+  `IDCATEGORIE` int NOT NULL,
+  `CAPACITEMAX` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -132,8 +132,8 @@ INSERT INTO `contenir` (`IDBATEAU`, `IDCATEGORIE`, `CAPACITEMAX`) VALUES
 --
 
 CREATE TABLE `equipement` (
-  `IDEQUIPEMENT` int(11) NOT NULL,
-  `LIBELLE` char(32) DEFAULT NULL
+  `IDEQUIPEMENT` int NOT NULL,
+  `LIBELLE` char(32) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -153,10 +153,10 @@ INSERT INTO `equipement` (`IDEQUIPEMENT`, `LIBELLE`) VALUES
 --
 
 CREATE TABLE `liaison` (
-  `IDLIAISON` int(11) NOT NULL,
-  `IDSECTEUR` int(11) NOT NULL,
-  `IDPORTDEPART` int(11) NOT NULL,
-  `IDPORTARRIVEE` int(11) NOT NULL,
+  `IDLIAISON` int NOT NULL,
+  `IDSECTEUR` int NOT NULL,
+  `IDPORTDEPART` int NOT NULL,
+  `IDPORTARRIVEE` int NOT NULL,
   `DUREE` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -184,7 +184,7 @@ INSERT INTO `liaison` (`IDLIAISON`, `IDSECTEUR`, `IDPORTDEPART`, `IDPORTARRIVEE`
 --
 
 CREATE TABLE `periode` (
-  `IDPERIODE` int(11) NOT NULL,
+  `IDPERIODE` int NOT NULL,
   `DATEDEBUT` date DEFAULT NULL,
   `DATEFIN` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -205,8 +205,8 @@ INSERT INTO `periode` (`IDPERIODE`, `DATEDEBUT`, `DATEFIN`) VALUES
 --
 
 CREATE TABLE `port` (
-  `IDPORT` int(11) NOT NULL,
-  `NOM` char(32) DEFAULT NULL
+  `IDPORT` int NOT NULL,
+  `NOM` char(32) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -233,8 +233,8 @@ INSERT INTO `port` (`IDPORT`, `NOM`) VALUES
 --
 
 CREATE TABLE `proposer` (
-  `IDBATEAU` int(11) NOT NULL,
-  `IDEQUIPEMENT` int(11) NOT NULL
+  `IDBATEAU` int NOT NULL,
+  `IDEQUIPEMENT` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -259,11 +259,11 @@ INSERT INTO `proposer` (`IDBATEAU`, `IDEQUIPEMENT`) VALUES
 --
 
 CREATE TABLE `reservation` (
-  `IDRESERVATION` int(11) NOT NULL,
-  `IDLIAISON` int(11) NOT NULL,
-  `IDTRAVERSEE` int(11) NOT NULL,
-  `IDCLIENT` int(11) NOT NULL,
-  `RECAPITULATIF` char(32) DEFAULT NULL
+  `IDRESERVATION` int NOT NULL,
+  `IDLIAISON` int NOT NULL,
+  `IDTRAVERSEE` int NOT NULL,
+  `IDCLIENT` int NOT NULL,
+  `RECAPITULATIF` char(32) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -280,8 +280,8 @@ INSERT INTO `reservation` (`IDRESERVATION`, `IDLIAISON`, `IDTRAVERSEE`, `IDCLIEN
 --
 
 CREATE TABLE `secteur` (
-  `IDSECTEUR` int(11) NOT NULL,
-  `LIBELLE` char(32) DEFAULT NULL
+  `IDSECTEUR` int NOT NULL,
+  `LIBELLE` char(32) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -301,9 +301,9 @@ INSERT INTO `secteur` (`IDSECTEUR`, `LIBELLE`) VALUES
 --
 
 CREATE TABLE `selectionner` (
-  `IDTYPE` int(11) NOT NULL,
-  `IDRESERVATION` int(11) NOT NULL,
-  `QUANTITE` char(32) DEFAULT NULL
+  `IDTYPE` int NOT NULL,
+  `IDRESERVATION` int NOT NULL,
+  `QUANTITE` char(32) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -320,9 +320,9 @@ INSERT INTO `selectionner` (`IDTYPE`, `IDRESERVATION`, `QUANTITE`) VALUES
 --
 
 CREATE TABLE `tarifier` (
-  `IDLIAISON` int(11) NOT NULL,
-  `IDPERIODE` int(11) NOT NULL,
-  `IDTYPE` int(11) NOT NULL,
+  `IDLIAISON` int NOT NULL,
+  `IDPERIODE` int NOT NULL,
+  `IDTYPE` int NOT NULL,
   `TARIF` decimal(13,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -340,10 +340,10 @@ INSERT INTO `tarifier` (`IDLIAISON`, `IDPERIODE`, `IDTYPE`, `TARIF`) VALUES
 --
 
 CREATE TABLE `traversee` (
-  `IDLIAISON` int(11) NOT NULL,
-  `IDTRAVERSEE` int(11) NOT NULL,
-  `IDBATEAU` int(11) NOT NULL,
-  `DATETRAVERSEE` date DEFAULT NULL,
+  `IDLIAISON` int NOT NULL,
+  `IDTRAVERSEE` int NOT NULL,
+  `IDBATEAU` int NOT NULL,
+  `DATETRAVERSEE` char(32) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `HEURE` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -352,6 +352,7 @@ CREATE TABLE `traversee` (
 --
 
 INSERT INTO `traversee` (`IDLIAISON`, `IDTRAVERSEE`, `IDBATEAU`, `DATETRAVERSEE`, `HEURE`) VALUES
+(1, 36, 1, '2022-10-02', '10:00:00'),
 (1, 541202, 1, '2021-09-22', '09:00:00'),
 (2, 541203, 2, '2021-09-22', '17:00:00');
 
@@ -362,9 +363,9 @@ INSERT INTO `traversee` (`IDLIAISON`, `IDTRAVERSEE`, `IDBATEAU`, `DATETRAVERSEE`
 --
 
 CREATE TABLE `type` (
-  `IDTYPE` int(11) NOT NULL,
-  `IDCATEGORIE` int(11) NOT NULL,
-  `LIBELLE` char(32) DEFAULT NULL
+  `IDTYPE` int NOT NULL,
+  `IDCATEGORIE` int NOT NULL,
+  `LIBELLE` char(32) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
