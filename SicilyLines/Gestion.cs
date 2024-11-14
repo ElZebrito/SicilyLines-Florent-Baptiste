@@ -1,4 +1,5 @@
 ﻿using SicilyLines.Controler;
+using SicilyLines.DAL;
 using SicilyLines.Modele;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace SicilyLines
         Mgr monManager;
         List<Liaison> lstLiaison = new List<Liaison>();
         List<Traversee> lstTraversee = new List<Traversee>();
+        List<Traversee> ListeTraverseeParLiaison;
         public Gestion()
         {
             InitializeComponent();
@@ -68,11 +70,70 @@ namespace SicilyLines
 
         private void insertButton_Click(object sender, EventArgs e)
         {
-            Liaison selectedLiaison = (Liaison)lbLiaison.SelectedItem;
-            Insertion insertion = new Insertion(selectedLiaison);
-            insertion.ShowDialog();
-            lstTraversee = monManager.chargementTraverseeLiaisonBD(selectedLiaison);
-            afficherTraversee();
+            try
+            {
+                int idTraversee = Convert.ToInt32(tbIdTraversee.Text);
+                int idBateau = Convert.ToInt32(tbIdBateau.Text);
+                Liaison selectedLiaison = (Liaison)lbLiaison.SelectedItem;
+                string dateTraversee = tbDateTraversee.Text;
+                TimeSpan heure = TimeSpan.Parse(tbHeure.Text);
+
+                monManager.InsererNouvelleTraversee(idTraversee, idBateau, selectedLiaison, dateTraversee, heure);
+
+                // Rafraîchir la liste des traversées
+                lstTraversee = monManager.chargementTraverseeLiaisonBD(selectedLiaison);
+                afficherTraversee();
+
+                MessageBox.Show("Traversée ajoutée avec succès.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors de l'ajout de la traversée : " + ex.Message);
+            }
         }
+
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbIdBateau_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            Traversee traversee = lbTraversee.SelectedItem as Traversee;
+
+            if (traversee != null)
+            {
+                try
+                {
+                    monManager.SupTraversee(traversee);
+
+                    Liaison selectedLiaison = lbLiaison.SelectedItem as Liaison;
+                    lstTraversee = monManager.chargementTraverseeLiaisonBD(selectedLiaison);
+                    afficherTraversee();
+
+                    MessageBox.Show("Traversée supprimée avec succès.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur lors de la suppression de la traversée : " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner une traversée à supprimer.");
+            }
+        }
+
     }
 }
