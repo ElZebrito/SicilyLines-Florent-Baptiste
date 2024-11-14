@@ -8,13 +8,13 @@ namespace SicilyLines.Modele
 {
     public class Traversee
     {
-        private string idTraversee;
-        private string idBateau;
+        private int idTraversee;
+        private int idBateau;
         private Liaison liaison;
-        private DateTime dateTraversee;
+        private string dateTraversee;
         private TimeSpan heure;
 
-        public Traversee(string idTraversee, string idBateau, Liaison liaison, DateTime dateTraversee, TimeSpan heure)
+        public Traversee(int idTraversee, int idBateau, Liaison liaison, string dateTraversee, TimeSpan heure)
         {
             this.idTraversee = idTraversee;
             this.idBateau = idBateau;
@@ -23,12 +23,12 @@ namespace SicilyLines.Modele
             this.heure = heure;
         }
 
-        public string IdTraversee
+        public int IdTraversee
         {
             get => idTraversee;
         }
 
-        public string IdBateau
+        public int IdBateau
         {
             get => idBateau;
         }
@@ -38,7 +38,7 @@ namespace SicilyLines.Modele
             get => liaison;
         }
 
-        public DateTime DateTraversee
+        public string DateTraversee
         {
             get => dateTraversee;
         }
@@ -46,6 +46,10 @@ namespace SicilyLines.Modele
         public TimeSpan Heure
         {
             get => heure;
+        }
+        public string Description
+        {
+            get => $"Id Traversee : {idTraversee}, IdBateau : {IdBateau}, Id Liaison : {liaison.IdLiaison}, Date traversée : {dateTraversee}, Heure : {heure}";
         }
     }
 }

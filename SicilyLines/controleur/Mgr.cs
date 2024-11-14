@@ -14,6 +14,7 @@ namespace SicilyLines.Controler
         LiaisonDAO LiaisonDAO = new LiaisonDAO();
 
         List<Liaison> maListeLiaison;
+        List<Traversee> maListeTraversee;
 
         public Mgr()
         {
@@ -31,5 +32,15 @@ namespace SicilyLines.Controler
 
             return (maListeLiaison);
         }
+
+        // Récupération de la liste des Traversees à partir de la DAL
+        public List<Traversee> chargementTraverseeLiaisonBD(Liaison uneLiaison)
+        {
+
+            maListeTraversee = TraverseeDAO.getTraverseeLiaisons(uneLiaison);
+
+            return (maListeTraversee);
+        }
+
     }
 }

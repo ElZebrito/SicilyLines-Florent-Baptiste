@@ -46,7 +46,7 @@ namespace SicilyLines.DAL
                 {
                     int idLiaison = (int)reader.GetValue(0);
                     int idSecteur = (int)reader.GetValue(1);
-                    string libSecteur = (string)reader.GetValue(2); // Correction ici
+                    string libSecteur = (string)reader.GetValue(2);
                     int idPortD = (int)reader.GetValue(3);
                     string libPortD = (string)reader.GetValue(4);
                     int idPortA = (int)reader.GetValue(5);

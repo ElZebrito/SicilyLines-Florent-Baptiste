@@ -16,6 +16,7 @@ namespace SicilyLines
     {
         Mgr monManager;
         List<Liaison> lstLiaison = new List<Liaison>();
+        List<Traversee> lstTraversee = new List<Traversee>();
         public Gestion()
         {
             InitializeComponent();
@@ -37,10 +38,32 @@ namespace SicilyLines
             }
         }
 
+        public void afficherTraversee()
+        {
+            try
+            {
+                lbTraversee.DataSource = null;
+                lbTraversee.DataSource = lstTraversee;
+                lbTraversee.DisplayMember = "Description";
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void Gestion_Load(object sender, EventArgs e)
         {
             lstLiaison = monManager.chargementLiaisonBD();
             afficherLiaison();
+        }
+
+        private void lbLiaison_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Liaison uneLiaison = (Liaison)lbLiaison.SelectedItem;
+            lstTraversee = monManager.chargementTraverseeLiaisonBD(uneLiaison);
+            afficherTraversee();
         }
     }
 }
