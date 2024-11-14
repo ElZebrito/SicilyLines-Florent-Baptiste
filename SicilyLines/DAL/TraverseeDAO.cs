@@ -58,6 +58,45 @@ namespace SicilyLines.DAL
             }
         }
 
+        public static List<Traversee> TrouverTraversee(Liaison l, List<Traversee> lt)
+        {
+
+            List<Traversee> ListeTraverseeLiaison = new List<Traversee>();
+
+            foreach (Traversee traversee in lt)
+            {
+                if (traversee.Liaison == l)
+                {
+                    ListeTraverseeLiaison.Add(traversee);
+                }
+            }
+
+            return ListeTraverseeLiaison;
+
+        }
+
+        public static void SupTraversee(Traversee traversee)
+        {
+            try
+            {
+                maConnexionSql = ConnexionSql.getInstance(provider, dataBase, uid, mdp);
+                maConnexionSql.openConnection();
+
+
+                string query = $"DELETE FROM traversee WHERE IDTRAVERSEE = {traversee.IdTraversee}";
+
+                Ocom = maConnexionSql.reqExec(query);
+                Ocom.ExecuteNonQuery();
+
+                maConnexionSql.closeConnection();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erreur lors de la suppression de la traversée : " + ex.Message);
+            }
+        }
+
+
         public static void InsertTraversee(Traversee traversee)
         {
             try
