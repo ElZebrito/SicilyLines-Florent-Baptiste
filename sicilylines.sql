@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 08 nov. 2024 à 10:19
+-- Généré le : ven. 04 oct. 2024 à 08:21
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -40,8 +40,11 @@ CREATE TABLE `bateau` (
 --
 
 INSERT INTO `bateau` (`IDBATEAU`, `NOM`, `LONGUEUR`, `LARGEUR`, `VITESSE`) VALUES
-(1, 'L\'Express', 100.50, 20.30, 25),
-(2, 'Le Rapide', 110.75, 22.00, 30);
+(1, 'Marco', 30.00, 8.00, 25),
+(2, 'Mantegna', 28.00, 7.50, 24),
+(3, 'Antioco', 29.00, 8.00, 23),
+(4, 'Platone', 27.00, 7.00, 22),
+(5, 'Eduardo', 31.00, 9.00, 26);
 
 -- --------------------------------------------------------
 
@@ -59,9 +62,9 @@ CREATE TABLE `categorie` (
 --
 
 INSERT INTO `categorie` (`IDCATEGORIE`, `LIBELLE`) VALUES
-(1, 'Economique'),
-(2, 'Business'),
-(3, 'Première classe');
+(1, 'Passager'),
+(2, 'Véh.inf.2m'),
+(3, 'Véh.sup.2m');
 
 -- --------------------------------------------------------
 
@@ -81,8 +84,16 @@ CREATE TABLE `client` (
 --
 
 INSERT INTO `client` (`IDCLIENT`, `CP`, `ADRESSE`, `VILLE`) VALUES
-(1, 75001, '12 Rue de la Paix', 'Paris'),
-(2, 13008, '5 Boulevard Michelet', 'Marseille');
+(1, 75001, '5 Rue de Rivoli', 'Paris'),
+(2, 69002, '10 Rue de la République', 'Lyon'),
+(3, 13001, '15 Boulevard de la Liberté', 'Marseille'),
+(4, 59000, '20 Rue Faidherbe', 'Lille'),
+(5, 31000, '25 Place du Capitole', 'Toulouse'),
+(6, 44000, '30 Rue de la Bourse', 'Nantes'),
+(7, 67000, '35 Rue des Grandes Arcades', 'Strasbourg'),
+(8, 35000, '40 Rue Saint-Malo', 'Rennes'),
+(9, 83000, '45 Avenue du Maréchal Leclerc', 'Toulon'),
+(10, 37000, '50 Rue Nationale', 'Tours');
 
 -- --------------------------------------------------------
 
@@ -101,10 +112,18 @@ CREATE TABLE `contenir` (
 --
 
 INSERT INTO `contenir` (`IDBATEAU`, `IDCATEGORIE`, `CAPACITEMAX`) VALUES
-(1, 1, 150),
-(1, 2, 50),
-(2, 1, 100),
-(2, 3, 20);
+(1, 1, 300),
+(1, 2, 15),
+(1, 3, 5),
+(2, 1, 276),
+(2, 2, 10),
+(2, 3, 3),
+(3, 1, 250),
+(3, 2, 8),
+(3, 3, 2),
+(4, 1, 155),
+(4, 2, 5),
+(4, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -122,9 +141,10 @@ CREATE TABLE `equipement` (
 --
 
 INSERT INTO `equipement` (`IDEQUIPEMENT`, `LIBELLE`) VALUES
-(1, 'Restaurant'),
-(2, 'Piscine'),
-(3, 'Wi-Fi');
+(1, 'Accès Handicapé'),
+(2, 'Bar'),
+(3, 'Pont Promenade'),
+(4, 'Salon Vidéo');
 
 -- --------------------------------------------------------
 
@@ -145,8 +165,17 @@ CREATE TABLE `liaison` (
 --
 
 INSERT INTO `liaison` (`IDLIAISON`, `IDSECTEUR`, `IDPORTDEPART`, `IDPORTARRIVEE`, `DUREE`) VALUES
-(1, 1, 1, 3, '03:30:00'),
-(2, 2, 2, 4, '05:00:00');
+(1, 1, 2, 3, '02:30:00'),
+(2, 2, 3, 4, '04:00:00'),
+(11, 3, 8, 3, '00:50:00'),
+(15, 1, 1, 2, '01:30:00'),
+(16, 2, 4, 5, '01:25:00'),
+(17, 2, 4, 6, '01:45:00'),
+(19, 2, 4, 7, '02:05:00'),
+(21, 4, 9, 11, '00:30:00'),
+(24, 1, 1, 3, '04:00:00'),
+(25, 3, 8, 6, '00:40:00'),
+(30, 4, 9, 10, '02:30:00');
 
 -- --------------------------------------------------------
 
@@ -165,8 +194,9 @@ CREATE TABLE `periode` (
 --
 
 INSERT INTO `periode` (`IDPERIODE`, `DATEDEBUT`, `DATEFIN`) VALUES
-(1, '2024-06-01', '2024-06-30'),
-(2, '2024-07-01', '2024-07-31');
+(1, '2021-09-01', '2022-06-15'),
+(2, '2022-06-16', '2022-09-15'),
+(3, '2022-09-16', '2023-05-31');
 
 -- --------------------------------------------------------
 
@@ -184,10 +214,17 @@ CREATE TABLE `port` (
 --
 
 INSERT INTO `port` (`IDPORT`, `NOM`) VALUES
-(1, 'Port de Marseille'),
-(2, 'Port de Nice'),
-(3, 'Port de Bastia'),
-(4, 'Port de Civitavecchia');
+(1, 'Palerme'),
+(2, 'Ustica'),
+(3, 'Lipari'),
+(4, 'Messine'),
+(5, 'Stromboli'),
+(6, 'Vulcano'),
+(7, 'Panarea'),
+(8, 'Milazzo'),
+(9, 'Trapani'),
+(10, 'Pantelleria'),
+(11, 'Favignagna');
 
 -- --------------------------------------------------------
 
@@ -207,8 +244,13 @@ CREATE TABLE `proposer` (
 INSERT INTO `proposer` (`IDBATEAU`, `IDEQUIPEMENT`) VALUES
 (1, 1),
 (1, 2),
+(1, 4),
 (2, 1),
-(2, 3);
+(2, 2),
+(3, 1),
+(3, 3),
+(4, 1),
+(4, 4);
 
 -- --------------------------------------------------------
 
@@ -229,8 +271,7 @@ CREATE TABLE `reservation` (
 --
 
 INSERT INTO `reservation` (`IDRESERVATION`, `IDLIAISON`, `IDTRAVERSEE`, `IDCLIENT`, `RECAPITULATIF`) VALUES
-(1, 1, 1, 1, 'Réservation client 1 pour la tra'),
-(2, 2, 2, 2, 'Réservation client 2 pour la tra');
+(1, 1, 541202, 1, 'Réservation pour 2 Adultes');
 
 -- --------------------------------------------------------
 
@@ -248,8 +289,10 @@ CREATE TABLE `secteur` (
 --
 
 INSERT INTO `secteur` (`IDSECTEUR`, `LIBELLE`) VALUES
-(1, 'Secteur Nord'),
-(2, 'Secteur Sud');
+(1, 'Palerme'),
+(2, 'Messine'),
+(3, 'Milazzo'),
+(4, 'Trapani');
 
 -- --------------------------------------------------------
 
@@ -268,8 +311,7 @@ CREATE TABLE `selectionner` (
 --
 
 INSERT INTO `selectionner` (`IDTYPE`, `IDRESERVATION`, `QUANTITE`) VALUES
-(1, 1, '2'),
-(2, 2, '1');
+(1, 1, '2 Adultes');
 
 -- --------------------------------------------------------
 
@@ -289,9 +331,7 @@ CREATE TABLE `tarifier` (
 --
 
 INSERT INTO `tarifier` (`IDLIAISON`, `IDPERIODE`, `IDTYPE`, `TARIF`) VALUES
-(1, 1, 1, 100.50),
-(1, 2, 2, 75.00),
-(2, 1, 3, 25.00);
+(1, 1, 1, 20.00);
 
 -- --------------------------------------------------------
 
@@ -312,8 +352,8 @@ CREATE TABLE `traversee` (
 --
 
 INSERT INTO `traversee` (`IDLIAISON`, `IDTRAVERSEE`, `IDBATEAU`, `DATETRAVERSEE`, `HEURE`) VALUES
-(1, 1, 1, '2024-07-15', '09:00:00'),
-(2, 2, 2, '2024-07-16', '14:00:00');
+(1, 541202, 1, '2021-09-22', '09:00:00'),
+(2, 541203, 2, '2021-09-22', '17:00:00');
 
 -- --------------------------------------------------------
 
@@ -332,9 +372,10 @@ CREATE TABLE `type` (
 --
 
 INSERT INTO `type` (`IDTYPE`, `IDCATEGORIE`, `LIBELLE`) VALUES
-(1, 1, 'Voiture'),
-(2, 2, 'Moto'),
-(3, 3, 'Vélo');
+(1, 1, 'Adulte'),
+(2, 1, 'Junior 8 à 18 ans'),
+(3, 1, 'Enfant 0 à 7 ans'),
+(4, 2, 'Voiture longueur inférieure à 4m');
 
 --
 -- Index pour les tables déchargées
