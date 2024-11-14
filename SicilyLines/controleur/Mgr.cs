@@ -15,6 +15,7 @@ namespace SicilyLines.Controler
 
         List<Liaison> maListeLiaison;
         List<Traversee> maListeTraversee;
+        List<Bateau> maListeBateau;
 
         public Mgr()
         {
@@ -24,13 +25,22 @@ namespace SicilyLines.Controler
 
 
 
-        // Récupération de la liste des employés à partir de la DAL
+        // Récupération de la liste des liaisons à partir de la DAL
         public List<Liaison> chargementLiaisonBD()
         {
 
             maListeLiaison = LiaisonDAO.getLiaisons();
 
             return (maListeLiaison);
+        }
+
+        // Récupération de la liste des bateaux à partir de la DAL
+        public List<Bateau> chargementBateauBD()
+        {
+
+            maListeBateau = BateauDAO.getBateaux();
+
+            return (maListeBateau);
         }
 
         // Récupération de la liste des Traversees à partir de la DAL

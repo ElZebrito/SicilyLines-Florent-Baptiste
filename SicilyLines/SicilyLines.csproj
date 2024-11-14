@@ -100,6 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controleur\Mgr.cs" />
+    <Compile Include="DAL\BateauDAO.cs" />
     <Compile Include="DAL\connexion.cs" />
     <Compile Include="DAL\LiaisonDAO.cs" />
     <Compile Include="DAL\TraverseeDAO.cs" />
@@ -109,6 +110,13 @@
     <Compile Include="Gestion.Designer.cs">
       <DependentUpon>Gestion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Insertion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Insertion.Designer.cs">
+      <DependentUpon>Insertion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modele\Bateau.cs" />
     <Compile Include="Modele\Liaison.cs" />
     <Compile Include="Modele\Port.cs" />
     <Compile Include="Modele\Secteur.cs" />
@@ -117,6 +125,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Gestion.resx">
       <DependentUpon>Gestion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Insertion.resx">
+      <DependentUpon>Insertion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
