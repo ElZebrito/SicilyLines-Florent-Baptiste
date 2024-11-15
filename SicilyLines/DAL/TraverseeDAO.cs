@@ -118,26 +118,29 @@ namespace SicilyLines.DAL
             }
         }
 
-        public static void updateTraversee(Traversee t)
+        public static void updateTraverseeDateHeure(Traversee t)
         {
             try
             {
                 maConnexionSql = ConnexionSql.getInstance(provider, dataBase, uid, mdp);
                 maConnexionSql.openConnection();
 
-                string query = "UPDATE traversee SET IDTRAVERSEE = '" + t.IdTraversee + "', IDBATEAU = '" + t.IdBateau + "', DATETRAVERSEE = '" + t.DateTraversee + "', HEURE = '" + t.Heure + "' WHERE IDLIAISON = '" + t.Liaison.IdLiaison + "'";
-
+                // Mise à jour de la date et de l'heure uniquement
+                string query = $"UPDATE traversee " +
+                               $"SET DATETRAVERSEE = '{t.DateTraversee}', HEURE = '{t.Heure}' " +
+                               $"WHERE IDTRAVERSEE = {t.IdTraversee}";
 
                 Ocom = maConnexionSql.reqExec(query);
-                int i = Ocom.ExecuteNonQuery();
+                Ocom.ExecuteNonQuery();
 
                 maConnexionSql.closeConnection();
             }
-            catch (Exception emp)
+            catch (Exception ex)
             {
-                throw (emp);
+                throw new Exception("Erreur lors de la mise à jour de la traversée : " + ex.Message);
             }
         }
+
 
 
     }

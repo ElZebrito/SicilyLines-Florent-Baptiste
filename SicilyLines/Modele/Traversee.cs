@@ -41,12 +41,15 @@ namespace SicilyLines.Modele
         public string DateTraversee
         {
             get => dateTraversee;
+            set => dateTraversee = value; 
         }
 
         public TimeSpan Heure
         {
             get => heure;
+            set => heure = value; 
         }
+
         public string Description
         {
             get => $"Id Traversee : {idTraversee}, IdBateau : {IdBateau}, Id Liaison : {liaison.IdLiaison}, Date traversée : {dateTraversee}, Heure : {heure}";

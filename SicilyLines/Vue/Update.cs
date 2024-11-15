@@ -14,47 +14,46 @@ namespace SicilyLines
 {
     public partial class Update : Form
     {
-        private Traversee t;
+        private Traversee t; 
         private Mgr monManager;
-        private Liaison selectedLiaison;
-        private Traversee selectedTraversee;
-        public Update(Traversee selectedTraversee, Liaison selectedLiaison)
+
+        public Update(Traversee selectedTraversee)
         {
             InitializeComponent();
             monManager = new Mgr();
-            this.selectedTraversee = selectedTraversee;
-            this.selectedLiaison = selectedLiaison;
             t = selectedTraversee;
         }
 
-
         private void Update_Load(object sender, EventArgs e)
         {
+            // Pré-remplit les champs avec les valeurs actuelles
             tbTraversee.Text = t.IdTraversee.ToString();
+            tbTraversee.Enabled = false; 
+
             tbBateau.Text = t.IdBateau.ToString();
-            tbDate.Text = t.DateTraversee;
-            tbHeure.Text = t.Heure.ToString(@"hh\:mm\:ss");
+            tbBateau.Enabled = false; 
+
+            tbDate.Text = t.DateTraversee; 
+            tbHeure.Text = t.Heure.ToString(@"hh\:mm\:ss"); 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
-                // Appeler la méthode de mise à jour avec l'objet modifié
+                // Met à jour les champs date et heure uniquement
+                t.DateTraversee = tbDate.Text;
+                t.Heure = TimeSpan.Parse(tbHeure.Text);
+
                 monManager.updateTraversee(t);
 
-                // Message de confirmation
                 MessageBox.Show("Traversée modifiée avec succès.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Fermer le formulaire après la mise à jour
                 this.Close();
             }
             catch (Exception ex)
             {
-                // Afficher un message d'erreur si la mise à jour échoue
                 MessageBox.Show("Erreur lors de la mise à jour : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
     }
 }

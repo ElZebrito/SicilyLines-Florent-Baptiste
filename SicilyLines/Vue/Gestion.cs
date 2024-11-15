@@ -125,16 +125,15 @@ namespace SicilyLines
             {
                 Liaison selectedLiaison = (Liaison)lbLiaison.SelectedItem;
 
-                // Vérifier si une traversée est sélectionnée dans lbTraversee
                 if (lbTraversee.SelectedItem != null)
                 {
                     Traversee selectedTraversee = (Traversee)lbTraversee.SelectedItem;
 
-                    // Créer la fenêtre de modification avec la traversée et la liaison sélectionnées
-                    Update update = new Update(selectedTraversee, selectedLiaison);
-                    update.ShowDialog();
+                    // Ouvre le formulaire de modification
+                    Update updateForm = new Update(selectedTraversee);
+                    updateForm.ShowDialog();
 
-                    // Rechargez les traversées après modification
+                    // Recharge la liste après modification
                     lstTraversee = monManager.chargementTraverseeLiaisonBD(selectedLiaison);
                     afficherTraversee();
                 }
@@ -148,5 +147,6 @@ namespace SicilyLines
                 MessageBox.Show("Veuillez sélectionner une liaison.");
             }
         }
+
     }
 }
