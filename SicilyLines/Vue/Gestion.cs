@@ -57,9 +57,20 @@ namespace SicilyLines
 
         private void Gestion_Load(object sender, EventArgs e)
         {
-            lstLiaison = monManager.chargementLiaisonBD();
-            afficherLiaison();
+            try
+            {
+                lstLiaison = monManager.chargementLiaisonBD();
+                afficherLiaison();
+
+                // Mettre à jour l'ID de traversée au chargement
+                MettreAJourIdTraversee();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors du chargement : " + ex.Message);
+            }
         }
+
 
         private void lbLiaison_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -68,21 +79,49 @@ namespace SicilyLines
             afficherTraversee();
         }
 
+
+        private void MettreAJourIdTraversee()
+        {
+            try
+            {
+                int prochainId = TraverseeDAO.GetNextIdTraversee();
+
+                tbIdTraversee.Text = prochainId.ToString();
+                tbIdTraversee.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors de la récupération du prochain ID de traversée : " + ex.Message);
+            }
+        }
+
+
+
+
+
         private void insertButton_Click(object sender, EventArgs e)
         {
             try
             {
-                int idTraversee = Convert.ToInt32(tbIdTraversee.Text);
                 int idBateau = Convert.ToInt32(tbIdBateau.Text);
                 Liaison selectedLiaison = (Liaison)lbLiaison.SelectedItem;
                 string dateTraversee = tbDateTraversee.Text;
                 TimeSpan heure = TimeSpan.Parse(tbHeure.Text);
 
-                monManager.InsererNouvelleTraversee(idTraversee, idBateau, selectedLiaison, dateTraversee, heure);
+                // Appel de la méthode sans ID
+                monManager.InsererNouvelleTraverseeAutoId(idBateau, selectedLiaison, dateTraversee, heure);
 
                 // Rafraîchir la liste des traversées
                 lstTraversee = monManager.chargementTraverseeLiaisonBD(selectedLiaison);
                 afficherTraversee();
+
+                // Vider les champs de saisie
+                tbIdBateau.Clear();
+                tbDateTraversee.Clear();
+                tbHeure.Clear();
+
+                // Actualiser l'ID de traversée automatiquement
+                MettreAJourIdTraversee();
 
                 MessageBox.Show("Traversée ajoutée avec succès.");
             }
@@ -91,6 +130,9 @@ namespace SicilyLines
                 MessageBox.Show("Erreur lors de l'ajout de la traversée : " + ex.Message);
             }
         }
+
+
+
 
         private void deleteButton_Click(object sender, EventArgs e)
         {

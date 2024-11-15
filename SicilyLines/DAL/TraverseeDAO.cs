@@ -10,7 +10,6 @@ namespace SicilyLines.DAL
 {
     public class TraverseeDAO
     {
-        // attributs de connexion statiques
         private static string provider = "localhost";
         private static string dataBase = "sicilylines";
         private static string uid = "root";
@@ -39,17 +38,14 @@ namespace SicilyLines.DAL
                     string dateTraversee = (string)reader.GetValue(3);
                     TimeSpan heure = (TimeSpan)reader.GetValue(4);
 
-                    // Instanciation d'une Traversee avec l'objet Liaison passé en paramètre
                     Traversee t = new Traversee(idTraversee, idBateau, uneLiaison, dateTraversee, heure);
 
-                    // Ajout de cette Traversee à la liste 
                     lt.Add(t);
                 }
 
 
                 reader.Close();
                 maConnexionSql.closeConnection();
-                // Envoi de la liste au Manager
                 return lt;
             }
             catch (Exception ex)
@@ -97,15 +93,45 @@ namespace SicilyLines.DAL
         }
 
 
-        public static void InsertTraversee(Traversee traversee)
+
+        //INSERTION
+        public static int GetNextIdTraversee()
         {
             try
             {
                 maConnexionSql = ConnexionSql.getInstance(provider, dataBase, uid, mdp);
                 maConnexionSql.openConnection();
 
+                string query = "SELECT MAX(IDTRAVERSEE) FROM traversee";
+                Ocom = maConnexionSql.reqExec(query);
+                object result = Ocom.ExecuteScalar();
+                maConnexionSql.closeConnection();
+
+                if (result != DBNull.Value && result != null)
+                {
+                    return Convert.ToInt32(result) + 1;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erreur lors de la récupération du prochain ID de traversée : " + ex.Message);
+            }
+        }
+        public static void InsertTraverseeAutoId(Traversee traversee)
+        {
+            try
+            {
+                int nextId = GetNextIdTraversee();
+
+                maConnexionSql = ConnexionSql.getInstance(provider, dataBase, uid, mdp);
+                maConnexionSql.openConnection();
+
                 string query = "INSERT INTO traversee (IDTRAVERSEE, IDBATEAU, IDLIAISON, DATETRAVERSEE, HEURE) " +
-                               $"VALUES ({traversee.IdTraversee}, {traversee.IdBateau}, {traversee.Liaison.IdLiaison}, '{traversee.DateTraversee}', '{traversee.Heure}')";
+                               $"VALUES ({nextId}, {traversee.IdBateau}, {traversee.Liaison.IdLiaison}, '{traversee.DateTraversee}', '{traversee.Heure}')";
 
                 Ocom = maConnexionSql.reqExec(query);
                 Ocom.ExecuteNonQuery();
@@ -114,9 +140,11 @@ namespace SicilyLines.DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("Erreur lors de l'insertion de la traversée : " + ex.Message);
+                maConnexionSql.closeConnection();
+                throw new Exception("Erreur lors de l'insertion de la traversée avec ID automatique : " + ex.Message);
             }
         }
+
 
         public static void updateTraverseeDateHeure(Traversee t)
         {

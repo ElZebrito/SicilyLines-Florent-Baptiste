@@ -47,11 +47,12 @@ namespace SicilyLines.Controler
 
         }
 
-        public void InsererNouvelleTraversee(int idTraversee, int idBateau, Liaison liaison, string dateTraversee, TimeSpan heure)
+        public void InsererNouvelleTraverseeAutoId(int idBateau, Liaison liaison, string dateTraversee, TimeSpan heure)
         {
-            Traversee nouvelleTraversee = new Traversee(idTraversee, idBateau, liaison, dateTraversee, heure);
-            TraverseeDAO.InsertTraversee(nouvelleTraversee);
+            Traversee nouvelleTraversee = new Traversee(0, idBateau, liaison, dateTraversee, heure); // ID temporairement à 0
+            TraverseeDAO.InsertTraverseeAutoId(nouvelleTraversee);
         }
+
 
         public void updateTraversee(Traversee t)
         {

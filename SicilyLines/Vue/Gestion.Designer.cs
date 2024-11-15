@@ -54,11 +54,9 @@
             // lbLiaison
             // 
             this.lbLiaison.FormattingEnabled = true;
-            this.lbLiaison.ItemHeight = 16;
-            this.lbLiaison.Location = new System.Drawing.Point(13, 47);
-            this.lbLiaison.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbLiaison.Location = new System.Drawing.Point(10, 38);
             this.lbLiaison.Name = "lbLiaison";
-            this.lbLiaison.Size = new System.Drawing.Size(631, 148);
+            this.lbLiaison.Size = new System.Drawing.Size(474, 121);
             this.lbLiaison.TabIndex = 0;
             this.lbLiaison.SelectedIndexChanged += new System.EventHandler(this.lbLiaison_SelectedIndexChanged);
             // 
@@ -66,10 +64,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label1.Location = new System.Drawing.Point(275, 9);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(206, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 16);
+            this.label1.Size = new System.Drawing.Size(90, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Liste des Liaisons";
             // 
@@ -77,21 +74,18 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label2.Location = new System.Drawing.Point(243, 230);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(182, 187);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(203, 16);
+            this.label2.Size = new System.Drawing.Size(159, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Liste des Traversées par Liaison";
             // 
             // lbTraversee
             // 
             this.lbTraversee.FormattingEnabled = true;
-            this.lbTraversee.ItemHeight = 16;
-            this.lbTraversee.Location = new System.Drawing.Point(13, 265);
-            this.lbTraversee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbTraversee.Location = new System.Drawing.Point(10, 215);
             this.lbTraversee.Name = "lbTraversee";
-            this.lbTraversee.Size = new System.Drawing.Size(631, 276);
+            this.lbTraversee.Size = new System.Drawing.Size(474, 225);
             this.lbTraversee.TabIndex = 4;
             // 
             // groupBox3
@@ -105,93 +99,85 @@
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.insertButton);
-            this.groupBox3.Location = new System.Drawing.Point(683, 302);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox3.Location = new System.Drawing.Point(512, 245);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Size = new System.Drawing.Size(523, 226);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Size = new System.Drawing.Size(392, 184);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Insertion";
             // 
             // tbHeure
             // 
-            this.tbHeure.Location = new System.Drawing.Point(207, 108);
-            this.tbHeure.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbHeure.Location = new System.Drawing.Point(155, 88);
             this.tbHeure.Name = "tbHeure";
-            this.tbHeure.Size = new System.Drawing.Size(132, 22);
+            this.tbHeure.Size = new System.Drawing.Size(100, 20);
             this.tbHeure.TabIndex = 10;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(28, 108);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(21, 88);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(149, 16);
+            this.label6.Size = new System.Drawing.Size(119, 13);
             this.label6.TabIndex = 9;
             this.label6.Text = "Heure de la Traversée :";
             // 
             // tbDateTraversee
             // 
-            this.tbDateTraversee.Location = new System.Drawing.Point(324, 59);
-            this.tbDateTraversee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbDateTraversee.Location = new System.Drawing.Point(243, 48);
             this.tbDateTraversee.Name = "tbDateTraversee";
-            this.tbDateTraversee.Size = new System.Drawing.Size(132, 22);
+            this.tbDateTraversee.Size = new System.Drawing.Size(100, 20);
             this.tbDateTraversee.TabIndex = 8;
             // 
             // tbIdBateau
             // 
-            this.tbIdBateau.Location = new System.Drawing.Point(131, 68);
-            this.tbIdBateau.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbIdBateau.Location = new System.Drawing.Point(98, 55);
             this.tbIdBateau.Name = "tbIdBateau";
-            this.tbIdBateau.Size = new System.Drawing.Size(132, 22);
+            this.tbIdBateau.Size = new System.Drawing.Size(100, 20);
             this.tbIdBateau.TabIndex = 7;
             // 
             // tbIdTraversee
             // 
-            this.tbIdTraversee.Location = new System.Drawing.Point(149, 36);
-            this.tbIdTraversee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbIdTraversee.Location = new System.Drawing.Point(112, 29);
             this.tbIdTraversee.Name = "tbIdTraversee";
-            this.tbIdTraversee.Size = new System.Drawing.Size(132, 22);
+            this.tbIdTraversee.Size = new System.Drawing.Size(100, 20);
             this.tbIdTraversee.TabIndex = 6;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(316, 36);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(237, 29);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(141, 16);
+            this.label5.Size = new System.Drawing.Size(113, 13);
             this.label5.TabIndex = 5;
             this.label5.Text = "Date de la Traversée :";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(24, 68);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(18, 55);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(88, 16);
+            this.label4.Size = new System.Drawing.Size(74, 13);
             this.label4.TabIndex = 4;
             this.label4.Text = "Id du Bateau :";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 36);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(18, 29);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(109, 16);
+            this.label3.Size = new System.Drawing.Size(88, 13);
             this.label3.TabIndex = 3;
             this.label3.Text = "Id de Traversée :";
             // 
             // insertButton
             // 
-            this.insertButton.Location = new System.Drawing.Point(172, 154);
-            this.insertButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.insertButton.Location = new System.Drawing.Point(129, 125);
+            this.insertButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.insertButton.Name = "insertButton";
-            this.insertButton.Size = new System.Drawing.Size(187, 68);
+            this.insertButton.Size = new System.Drawing.Size(140, 55);
             this.insertButton.TabIndex = 2;
             this.insertButton.Text = "Insérer une nouvelle traversée";
             this.insertButton.UseVisualStyleBackColor = true;
@@ -200,21 +186,21 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.deleteButton);
-            this.groupBox1.Location = new System.Drawing.Point(889, 165);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Location = new System.Drawing.Point(512, 134);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(316, 132);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(392, 107);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Suppression";
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(64, 39);
-            this.deleteButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.deleteButton.Location = new System.Drawing.Point(129, 32);
+            this.deleteButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(187, 68);
+            this.deleteButton.Size = new System.Drawing.Size(140, 55);
             this.deleteButton.TabIndex = 1;
             this.deleteButton.Text = "Supprimer la traversée sélectionnée";
             this.deleteButton.UseVisualStyleBackColor = true;
@@ -223,21 +209,21 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.updateButton);
-            this.groupBox2.Location = new System.Drawing.Point(889, 12);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Location = new System.Drawing.Point(512, 10);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(316, 132);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Size = new System.Drawing.Size(392, 107);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Mise à jour";
             // 
             // updateButton
             // 
-            this.updateButton.Location = new System.Drawing.Point(64, 38);
-            this.updateButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.updateButton.Location = new System.Drawing.Point(129, 28);
+            this.updateButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(187, 68);
+            this.updateButton.Size = new System.Drawing.Size(140, 55);
             this.updateButton.TabIndex = 0;
             this.updateButton.Text = "Mettre à jour la traversée sélectionnée";
             this.updateButton.UseVisualStyleBackColor = true;
@@ -245,9 +231,9 @@
             // 
             // Gestion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1285, 554);
+            this.ClientSize = new System.Drawing.Size(964, 450);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
@@ -255,7 +241,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbLiaison);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Gestion";
             this.Text = "Gestion";
             this.Load += new System.EventHandler(this.Gestion_Load);
