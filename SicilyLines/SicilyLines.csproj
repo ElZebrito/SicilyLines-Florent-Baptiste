@@ -103,10 +103,10 @@
     <Compile Include="DAL\connexion.cs" />
     <Compile Include="DAL\LiaisonDAO.cs" />
     <Compile Include="DAL\TraverseeDAO.cs" />
-    <Compile Include="Gestion.cs">
+    <Compile Include="Vue\Gestion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Gestion.Designer.cs">
+    <Compile Include="Vue\Gestion.Designer.cs">
       <DependentUpon>Gestion.cs</DependentUpon>
     </Compile>
     <Compile Include="Modele\Liaison.cs" />
@@ -115,7 +115,13 @@
     <Compile Include="Modele\Traversee.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Gestion.resx">
+    <Compile Include="Vue\Update.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vue\Update.Designer.cs">
+      <DependentUpon>Update.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Vue\Gestion.resx">
       <DependentUpon>Gestion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -128,6 +134,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Vue\Update.resx">
+      <DependentUpon>Update.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
